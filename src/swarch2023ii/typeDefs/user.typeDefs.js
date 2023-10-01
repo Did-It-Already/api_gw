@@ -1,11 +1,10 @@
 export const userTypeDef = `
-  scalar Upload
   type User {
     user_id: Int!
     name: String!
     last_name: String!
     email: String!
-    image_url: String
+    profile_picture: String
     theme: String!
   }
   input UserInput {
