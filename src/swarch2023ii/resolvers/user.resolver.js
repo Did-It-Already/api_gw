@@ -1,0 +1,22 @@
+import { generalRequest, getRequest } from '../../utilities';
+
+const users_url = `http://127.0.0.1:8001/users`;
+
+const resolvers = {
+	Query: {
+		allUsers: (_) =>
+			getRequest(users_url, ''),
+		userById: (_, { user_id }) =>
+			generalRequest(`${users_url}/${user_id}/`, 'GET'),
+	},
+	Mutation: {
+		createUser: (_, { user }) =>
+			generalRequest(`${users_url}/`, 'POST', user),
+		updateUser: (_, { user_id, user }) =>
+			generalRequest(`${users_url}/${user_id}/`, 'PUT', user),
+		deleteUser: (_, { user_id }) =>
+			generalRequest(`${users_url}/${user_id}/`, 'DELETE')
+	}
+};
+
+export default resolvers;
