@@ -33,8 +33,9 @@ export function isAuthorized(userId, req_user_id) {
 }
 
 export async function checkAuth(contextValue, user_id) {
-	if ((contextValue.user_id == undefined) ) {
+	if ((typeof contextValue.user_id === "undefined") ) {
 		// return error
+	
 		return new Error('Not Authenticated');
 
 	}

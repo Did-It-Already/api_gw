@@ -1,6 +1,7 @@
 import { generalRequest, getRequest } from '../../utilities';
 
 const auth_url = `http://127.0.0.1:8000/api`;
+import userResolver from "./user.resolver"
 
 const resolvers = {
 	Query: {
@@ -9,11 +10,18 @@ const resolvers = {
 	},
 	Mutation: {
 		login: (_, { user }) =>
-			generalRequest(`${auth_url}/`, 'POST', user),
-		register: (_, { auth_url, user }) =>
-			generalRequest(`${auth_url}/${user_id}/`, 'PUT', user),
-		deleteUser: (_, { auth_url }) =>
-			generalRequest(`${users_url}/${user_id}/`, 'DELETE')
+			generalRequest(`${auth_url}/auth/login`, 'POST', user),
+		register: async (_, { user }) =>
+			{
+				console.log(user)
+				const userMutation = await userResolver.Mutation.createUser(null, {user:user})
+				console.log(userMutation)
+				user.user_id = userMutation.user_id
+				console.log(user)
+				return generalRequest(`${auth_url}/user/register`, 'POST', user)
+			},
+		refresh: (_, {refresh}) => 
+			generalRequest(`${auth_url}/auth/refresh`, 'POST', refresh),
 	}
 };
 

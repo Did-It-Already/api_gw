@@ -5,15 +5,21 @@ export const userTypeDef = `
     last_name: String!
     email: String!
     profile_picture: String
-    theme: String!
+    theme: String
   }
+  type DeleteResult {
+    user_id: Int!
+  }
+
   input UserInput {
     name: String!
     last_name: String!
     email: String!
     profile_picture: String
-    theme: String!
+    theme: String
+    password: String!
   }`;
+
 
 export const userQueries = `
       allUsers: [User]!
@@ -23,5 +29,5 @@ export const userQueries = `
 export const userMutations = `
     createUser(user: UserInput!): User!
     updateUser(user_id: Int!, user: UserInput!): User!
-    deleteUser(user_id: Int!): User
+    deleteUser(user_id: Int!): DeleteResult
 `;

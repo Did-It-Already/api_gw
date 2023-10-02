@@ -10,19 +10,40 @@ import {
 	userTypeDef
 } from './swarch2023ii/typeDefs/user.typeDefs';
 
+import {
+	taskMutations,
+	taskQueries,
+	taskTypeDef
+} from './swarch2023ii/typeDefs/tasks.typeDefs';
+
+import {
+	authMutations,
+	authQueries,
+	authTypeDef
+} from './swarch2023ii/typeDefs/auth.typeDefs';
+
 import userResolvers from './swarch2023ii/resolvers/user.resolver';
+import tasksResolvers from './swarch2023ii/resolvers/tasks.resolver';
+import authResolvers from './swarch2023ii/resolvers/auth.resolver';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
-		userTypeDef
+		userTypeDef,
+		taskTypeDef,
+		authTypeDef
+
 	],
 	[
-		userQueries
+		userQueries,
+		taskQueries,
+		authQueries
 	],
 	[
-		userMutations
+		userMutations,
+		taskMutations,
+		authMutations
 	]
 );
 
@@ -31,7 +52,10 @@ export default makeExecutableSchema({
 	typeDefs: mergedTypeDefs,
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
-		userResolvers
+		userResolvers,
+		tasksResolvers,
+		authResolvers
+
 	)
 });
 

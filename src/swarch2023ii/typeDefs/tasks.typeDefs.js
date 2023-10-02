@@ -14,7 +14,7 @@ export const taskTypeDef = `
     MatchedCount: Int!
     ModifiedCount: Int!
     UpsertedCount: Int!
-    UpsertedID: String?
+    UpsertedID: String
   }
   type TaskDeleted{
     Msg: String!
@@ -34,8 +34,8 @@ export const taskTypeDef = `
   
 
 export const taskQueries = `
-      allTasks: [Task]!
-      taskById(user_id: Int!, task_id: String!): Task!
+      allTasks(user_id: String!): [Task]!
+      taskById(user_id: String!, task_id: String!): Task!
   `;
 
 export const taskMutations = `
