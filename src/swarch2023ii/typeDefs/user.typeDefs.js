@@ -18,6 +18,13 @@ export const userTypeDef = `
     profile_picture: String
     theme: String
     password: String!
+  }
+  
+  input UserUpdateInput {
+    name: String
+    last_name: String
+    profile_picture: String
+    theme: String
   }`;
 
 
@@ -28,6 +35,6 @@ export const userQueries = `
 
 export const userMutations = `
     createUser(user: UserInput!): User!
-    updateUser(user_id: Int!, user: UserInput!): User!
+    updateUser(user_id: Int!, user: UserUpdateInput!): User!
     deleteUser(user_id: Int!): DeleteResult
 `;
