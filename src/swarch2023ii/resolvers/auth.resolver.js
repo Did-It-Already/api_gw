@@ -21,7 +21,7 @@ const resolvers = {
 				return generalRequest(`${auth_url}/user/register`, 'POST', user)
 			},
 		refresh: (_, {refresh}) => 
-			generalRequest(`${auth_url}/auth/refresh`, 'POST', refresh),
+			generalRequest(`${auth_url}/auth/refresh`, 'POST', {refresh}),
 	}
 };
 
