@@ -1,7 +1,7 @@
 export const taskTypeDef = `
   type Task {
     user_id:     String!
-    task_id:     String
+    _id:         String
     name:        String!
     description: String!
     is_done:     String
@@ -39,7 +39,7 @@ export const taskQueries = `
   `;
 
 export const taskMutations = `
-    createTask(task: TaskInput!): TaskCreated!
+    createTask(user_id: String!, task: TaskInput!): TaskCreated!
     updateTask(user_id: String!, task_id: String!, task: TaskUpdateInput!): TaskUpdated!
     updateTaskIsDone(user_id: String!, task_id: String!): TaskUpdated!
     deleteTask(user_id: String!, task_id: String!): TaskDeleted!
