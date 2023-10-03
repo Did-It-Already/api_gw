@@ -18,6 +18,13 @@ export const habitTypeDef = `
     frequency:   Int!
   }
 
+  type StatisticsResult {
+    _id:        String!
+    habit_id:   String!
+    date:       String!
+    user_id:    Int!
+  }
+
   input HabitUpdateInput{
     name:        String
     description: String
@@ -42,5 +49,9 @@ export const habitQueries = `
 export const habitMutations = `
       createHabit(user_id: Int!, habit: HabitInput!): HabitResponse!
       updateHabit(user_id: Int!, _id: String!, habit: HabitUpdateInput!): Habit!
+      deleteHabit(_id: String!): String!
+      updateHabitIsDone(_id: String!): String!
+      getStatistics(filtro: String!, valor: String!): [StatisticsResult!]
+      reviewHabits: String!
 
 `;

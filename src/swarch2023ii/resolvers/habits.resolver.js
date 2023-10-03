@@ -24,6 +24,22 @@ const resolvers = {
 			{
 				const check = await checkAuth(contextValue, parseInt(user_id));
 				return check instanceof Error ? check : generalRequest(`${habits_url}/habitos/${_id}`, 'PUT', habit)
+			},
+		deleteHabit: async (_, {_id}) => 
+			{
+				return await generalRequest(`${habits_url}/habitos/${_id}`, 'DELETE')
+			},
+		updateHabitIsDone: async (_, {_id}) => 
+			{
+				return await generalRequest(`${habits_url}/hacer/${_id}`, 'PUT')
+			},
+		getStatistics: async (_, {filtro, valor}) =>
+			{
+				return await generalRequest(`${habits_url}/estadisticas/${filtro}/${valor}`, 'GET')
+			},
+		reviewHabits: async (_) => 
+			{
+				return await generalRequest(`${habits_url}/revisar`, 'PUT')
 			}
 		},
         
