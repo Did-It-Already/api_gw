@@ -22,28 +22,37 @@ import {
 	authTypeDef
 } from './swarch2023ii/typeDefs/auth.typeDefs';
 
+import {
+	habitTypeDef,
+	habitMutations,
+	habitQueries
+} from './swarch2023ii/typeDefs/habits.typeDefs';
+
 import userResolvers from './swarch2023ii/resolvers/user.resolver';
 import tasksResolvers from './swarch2023ii/resolvers/tasks.resolver';
 import authResolvers from './swarch2023ii/resolvers/auth.resolver';
-
+import habitsResolvers from './swarch2023ii/resolvers/habits.resolver';
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
 		userTypeDef,
 		taskTypeDef,
-		authTypeDef
+		authTypeDef,
+		habitTypeDef
 
 	],
 	[
 		userQueries,
 		taskQueries,
-		authQueries
+		authQueries,
+		habitQueries
 	],
 	[
 		userMutations,
 		taskMutations,
-		authMutations
+		authMutations,
+		habitMutations
 	]
 );
 
@@ -54,7 +63,8 @@ export default makeExecutableSchema({
 		{ JSON: GraphQLJSON }, // allows scalar JSON
 		userResolvers,
 		tasksResolvers,
-		authResolvers
+		authResolvers,
+		habitsResolvers
 
 	)
 });
