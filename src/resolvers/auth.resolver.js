@@ -1,4 +1,4 @@
-import { generalRequest, getRequest } from '../../utilities';
+import { generalRequest, getRequest } from '../utilities';
 
 const auth_url = `http://127.0.0.1:8000/api`;
 import userResolver from "./user.resolver"

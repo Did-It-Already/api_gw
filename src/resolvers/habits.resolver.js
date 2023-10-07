@@ -1,5 +1,5 @@
-import { generalRequest, getRequest } from '../../utilities';
-import { isAuthorized, checkAuth } from '../../auth.utilities';
+import { generalRequest, getRequest } from '../utilities';
+import { isAuthorized, checkAuth } from '../auth.utilities';
 
 const habits_url = `http://127.0.0.1:3525`;
 
