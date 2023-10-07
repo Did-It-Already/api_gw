@@ -17,7 +17,7 @@ require('dotenv').config({ path: './.env' });
 app.use(koaLogger());
 
 const koaOptions = {
-	origin:true,
+	origin:'*',
 	credentials:true,
 	headers: ['Content-Type', 'Authorization', 'Accept'],
 };
