@@ -6,9 +6,9 @@ const resolvers = {
 	Query: {
 		allUsers: (_) =>
 			getRequest(users_url, ''),
-		userById: (_, { user_id }, contextValue) =>{
-			const check = checkAuth(contextValue, user_id);
-			return check instanceof Error ? check : generalRequest(`${users_url}/${user_id}/`, 'GET')
+		userById: async (_, {}, contextValue) =>{
+			const check = await checkAuth(contextValue);
+			return check instanceof Error ? check : generalRequest(`${users_url}/${contextValue.user_id}/`, 'GET')
 		}
 			
 	},
@@ -19,15 +19,15 @@ const resolvers = {
 			console.log(user)
 			return generalRequest(`${users_url}/`, 'POST', user)
 		},
-		updateUser: (_, { user_id, user }, contextValue) =>
+		updateUser:async (_, { user }, contextValue) =>
 		{
-			const check = checkAuth(contextValue, user_id);
-			return check instanceof Error ? check : generalRequest(`${users_url}/${user_id}/`, 'PUT', user)
+			const check = await checkAuth(contextValue);
+			return check instanceof Error ? check : generalRequest(`${users_url}/${contextValue.user_id}/`, 'PUT', user)
 		},
-		deleteUser: (_, { user_id }, contextValue) =>
+		deleteUser:async  (_, { }, contextValue) =>
 		{
-			const check = checkAuth(contextValue, user_id);
-			return check instanceof Error ? check : generalRequest(`${users_url}/${user_id}/`, 'DELETE')
+			const check = await checkAuth(contextValue);
+			return check instanceof Error ? check : generalRequest(`${users_url}/${contextValue.user_id}/`, 'DELETE')
 		}
 			
 	}
