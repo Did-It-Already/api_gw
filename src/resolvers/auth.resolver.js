@@ -23,7 +23,7 @@ const resolvers = {
 
 		deleteUser: async (_, { }, contextValue) =>
 			{
-				const userMutation = await userResolver.Mutation.deleteUser(null, {}, contextValue)
+				const userMutation = await userResolver.Mutation.delete(null, {}, contextValue)
 				if (userMutation instanceof Error) return userMutation
 				return generalRequest(`${auth_url}/user/${contextValue.id}`,'DELETE', )
 			},
