@@ -43,12 +43,12 @@ export const habitTypeDef = `
 
 export const habitQueries = `
       habits: [Habit]!
-      userHabits(user_id: Int!, _id: String): [Habit]!
+      userHabits(_id: String): [Habit]!
   `;
 
 export const habitMutations = `
-      createHabit(user_id: Int!, habit: HabitInput!): HabitResponse!
-      updateHabit(user_id: Int!, _id: String!, habit: HabitUpdateInput!): Habit!
+      createHabit(habit: HabitInput!): HabitResponse!
+      updateHabit(_id: String!, habit: HabitUpdateInput!): Habit!
       deleteHabit(_id: String!): String!
       updateHabitIsDone(_id: String!): String!
       getStatistics(filtro: String!, valor: String!): [StatisticsResult!]
