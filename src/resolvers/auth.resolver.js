@@ -21,7 +21,7 @@ const resolvers = {
 				return generalRequest(`${auth_url}/user/`, 'POST', user)
 			},
 
-		delete: async (_, { }, contextValue) =>
+		deleteUser: async (_, { }, contextValue) =>
 			{
 				const userMutation = await userResolver.Mutation.deleteUser(null, {}, contextValue)
 				if (userMutation instanceof Error) return userMutation

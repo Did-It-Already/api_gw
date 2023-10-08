@@ -43,5 +43,5 @@ export const authMutations = `
     register(user: UserInputAuth!): RegisterResult!
     login(user: LoginInput!): LoginResult!
     refresh(refresh: String!): LoginResult!
-    delete: AuthDeleteResult!
+    deleteUser: AuthDeleteResult!
 `;

@@ -36,5 +36,5 @@ export const userQueries = `
 export const userMutations = `
     createUser(user: UserInput!): User!
     updateUser(user: UserUpdateInput!): User!
-    deleteUser: DeleteResult
+    delete: DeleteResult
 `;

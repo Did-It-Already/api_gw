@@ -24,7 +24,7 @@ const resolvers = {
 			const check = await checkAuth(contextValue);
 			return check instanceof Error ? check : generalRequest(`${users_url}/${contextValue.user_id}/`, 'PUT', user)
 		},
-		deleteUser:async  (_, { }, contextValue) =>
+		delete:async  (_, { }, contextValue) =>
 		{
 			const check = await checkAuth(contextValue);
 			return check instanceof Error ? check : generalRequest(`${users_url}/${contextValue.user_id}/`, 'DELETE')
