@@ -34,13 +34,13 @@ export const taskTypeDef = `
   
 
 export const taskQueries = `
-      allTasks(user_id: String!): [Task]!
-      taskById(user_id: String!, task_id: String!): Task!
+      allTasks: [Task]!
+      taskById( task_id: String!): Task!
   `;
 
 export const taskMutations = `
-    createTask(user_id: String!, task: TaskInput!): TaskCreated!
-    updateTask(user_id: String!, task_id: String!, task: TaskUpdateInput!): TaskUpdated!
-    updateTaskIsDone(user_id: String!, task_id: String!): TaskUpdated!
-    deleteTask(user_id: String!, task_id: String!): TaskDeleted!
+    createTask( task: TaskInput!): TaskCreated!
+    updateTask( task_id: String!, task: TaskUpdateInput!): TaskUpdated!
+    updateTaskIsDone(task_id: String!): TaskUpdated!
+    deleteTask(task_id: String!): TaskDeleted!
 `;
