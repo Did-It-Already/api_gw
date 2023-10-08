@@ -30,6 +30,9 @@ export const authTypeDef = `
     email: String!
     password: String!
   }
+  type AuthDeleteResult {
+    message: String!
+  }
   `;
 
 export const authQueries = `
@@ -40,4 +43,5 @@ export const authMutations = `
     register(user: UserInputAuth!): RegisterResult!
     login(user: LoginInput!): LoginResult!
     refresh(refresh: String!): LoginResult!
+    delete: AuthDeleteResult!
 `;

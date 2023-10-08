@@ -34,7 +34,10 @@ app.use(async (ctx, next) => {
 		}
 
 		//ctx.state.token = token[1];
-		ctx.state.user_id = await getUserId(ctx.header.authorization.slice(7));
+		const ids =  await getUserId(ctx.header.authorization.slice(7));
+		ctx.state.user_id = ids.user_id;
+		ctx.state.id = ids.id;
+		
 
 	}
 	await next();
@@ -45,7 +48,7 @@ app.use(async (ctx, next) => {
 // GraphQL
 const graphql = graphqlKoa((ctx) => ({
 	schema: graphQLSchema,
-	context: { user_id: ctx.state.user_id },
+	context: { user_id: ctx.state.user_id, id: ctx.state.id },
 	formatError: formatErr
 }));
 router.post('/graphql', koaBody(), graphql);

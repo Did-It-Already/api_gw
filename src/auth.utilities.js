@@ -21,7 +21,7 @@ export async function getUserId(token) {
 	//TODO: handle better errors (no id when deleting, show invalid token msg )
 	const data = (await response.json()).data;
 	const user= data.user;
-	return user.user_id;
+	return {user_id: user.user_id, id: user.id};
 }
 
 export async function checkAuth(contextValue) {
