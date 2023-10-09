@@ -23,24 +23,24 @@ const resolvers = {
 	Mutation: {
 		createTask: async (_, { task }, contextValue) =>
 			{
-				const check = checkAuth(contextValue);
+				const check = await checkAuth(contextValue);
 				task.user_id = contextValue.user_id.toString();
 				return check instanceof Error ? check : generalRequest(`${tasks_url}`, 'POST', task)
 			},
 		updateTask: async (_, {  task_id, task }, contextValue) =>
 			{
-				const check = checkAuth(contextValue);
+				const check = await checkAuth(contextValue);
 				return check instanceof Error ? check : generalRequest(`${tasks_url}/${contextValue.user_id}/${task_id}`, 'PUT', task)
 				
 			},
 		updateTaskIsDone: async (_, {  task_id }, contextValue) =>
 			{
-				const check = checkAuth(contextValue);
+				const check =  await checkAuth(contextValue);
 				return check instanceof Error ? check : generalRequest(`${tasks_url}/${contextValue.user_id}/${task_id}`, 'PATCH')
 			},
 		deleteTask: async (_, {task_id }, contextValue) =>
 			{
-				const check = checkAuth(contextValue);
+				const check = await checkAuth(contextValue);
 				return check instanceof Error ? check : generalRequest(`${tasks_url}/${contextValue.user_id}/${task_id}`, 'DELETE')
 			}
 	}
