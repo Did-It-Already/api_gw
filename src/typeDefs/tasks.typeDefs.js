@@ -20,7 +20,6 @@ export const taskTypeDef = `
     Msg: String!
   }
   input TaskInput {
-    user_id:     String!
     name:        String!
     description: String!
     date:        String!
