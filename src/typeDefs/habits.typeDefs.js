@@ -53,5 +53,4 @@ export const habitMutations = `
       updateHabitIsDone(_id: String!): String!
       getStatistics(filtro: String!, valor: String!): [StatisticsResult!]
       reviewHabits: String!
-
 `;
