@@ -54,8 +54,6 @@ const resolvers = {
 
 				const query = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
 				const url = `${habits_url}/estadisticas${query}`;
-				console.log(query)
-				console.log(url)
 				return await generalRequest(url, 'GET')
 				
 
