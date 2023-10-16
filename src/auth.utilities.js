@@ -4,6 +4,7 @@ export async function getUserId(token) {
 		throw new Error('No authorization token provided');
 	}
 
+
 	
 	// call auth service to validate token
 	const response = await fetch('http://host.docker.internal:8000/api/auth/check',{
@@ -13,6 +14,7 @@ export async function getUserId(token) {
 		mode: 'cors',
 		headers:  {
 			Authorization: `Bearer ${token}`
+
 		}});
 	if (!response.ok) {
 		return  new Error('Invalid token');

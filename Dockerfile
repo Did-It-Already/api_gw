@@ -1,14 +1,14 @@
 FROM node:carbon-slim
 
 # Create app directory
-WORKDIR /api_gw
+WORKDIR /dia_api_gw
 
 # Install app dependencies
-COPY package.json /api_gw/
+COPY package.json /dia_api_gw/
 RUN npm install
 
 # Bundle app source
-COPY . /api_gw/
+COPY . /dia_api_gw/
 RUN npm run prepublish
 
-CMD [ "npm", "run", "runServer" ]
+CMD [ "npm", "run", "start" ]
