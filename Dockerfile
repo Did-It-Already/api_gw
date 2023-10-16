@@ -1,14 +1,14 @@
 FROM node:carbon-slim
 
 # Create app directory
-WORKDIR /swarch2023ii_ag
+WORKDIR /dia_api_gw
 
 # Install app dependencies
-COPY package.json /swarch2023ii_ag/
+COPY package.json /dia_api_gw/
 RUN npm install
 
 # Bundle app source
-COPY . /swarch2023ii_ag/
+COPY . /dia_api_gw/
 RUN npm run prepublish
 
-CMD [ "npm", "run", "runServer" ]
+CMD [ "npm", "run", "start" ]

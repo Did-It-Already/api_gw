@@ -1,7 +1,7 @@
 import { generalRequest, getRequest } from '../../utilities';
 import { isAuthorized, checkAuth } from '../../auth.utilities';
 
-const habits_url = `http://127.0.0.1:3525`;
+const habits_url = `http://host.docker.internal:3525`;
 
 const resolvers = {
 	Query: {

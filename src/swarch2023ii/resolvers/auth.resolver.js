@@ -1,6 +1,6 @@
 import { generalRequest, getRequest } from '../../utilities';
 
-const auth_url = `http://127.0.0.1:8000/api`;
+const auth_url = `http://host.docker.internal:8000/api`;
 import userResolver from "./user.resolver"
 
 const resolvers = {
