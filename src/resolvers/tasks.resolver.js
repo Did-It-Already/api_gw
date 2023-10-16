@@ -1,7 +1,7 @@
 import { generalRequest, getRequest } from '../utilities';
 import { isAuthorized, checkAuth } from '../auth.utilities';
 
-const tasks_url = `http://127.0.0.1:9000/task`;
+const tasks_url = `http://host.docker.internal:9000/task`;
 
 const resolvers = {
 	Query: {
