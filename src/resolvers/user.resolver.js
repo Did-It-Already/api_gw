@@ -1,4 +1,4 @@
-import { isAuthorized, checkAuth } from '../auth.utilities';
+import { checkAuth } from '../auth.utilities';
 import { generalRequest, getRequest } from '../utilities';
 const users_url = `http://host.docker.internal:8001/users`;
 

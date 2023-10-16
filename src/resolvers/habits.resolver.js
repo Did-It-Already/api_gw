@@ -1,5 +1,5 @@
-import { generalRequest, getRequest } from '../utilities';
-import { isAuthorized, checkAuth } from '../auth.utilities';
+import { generalRequest } from '../utilities';
+import { checkAuth } from '../auth.utilities';
 
 const habits_url = `http://host.docker.internal:3525`;
 
@@ -40,9 +40,19 @@ const resolvers = {
 			{
 				return await generalRequest(`${habits_url}/hacer/${_id}`, 'PUT')
 			},
-		getStatistics: async (_, {filtro, valor}) =>
+		getStatistics: async (_, {user_id, habit_id, date, _id }) =>
 			{
-				return await generalRequest(`${habits_url}/estadisticas/${filtro}/${valor}`, 'GET')
+				const queryParams = [];
+				if (user_id) queryParams.push(`user_id=${user_id}`);
+				if (habit_id) queryParams.push(`habit_id=${habit_id}`);
+				if (date) queryParams.push(`date=${date}`);
+				if (_id) queryParams.push(`_id=${_id}`);
+
+				const query = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
+				const url = `${habits_url}/estadisticas${query}`;
+				return await generalRequest(url, 'GET')
+				
+
 			},
 		reviewHabits: async (_) => 
 			{

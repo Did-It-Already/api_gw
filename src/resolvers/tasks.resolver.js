@@ -1,5 +1,5 @@
-import { generalRequest, getRequest } from '../utilities';
-import { isAuthorized, checkAuth } from '../auth.utilities';
+import { generalRequest} from '../utilities';
+import { checkAuth } from '../auth.utilities';
 
 const tasks_url = `http://host.docker.internal:9000/task`;
 
