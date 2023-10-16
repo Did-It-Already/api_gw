@@ -1,20 +1,21 @@
+import fetch from 'cross-fetch'
 export async function getUserId(token) {
 	if (!token) {
 		throw new Error('No authorization token provided');
 	}
 
-	const request = new Request('http://host.docker.internal:8000/api/auth/check', {
+
+	
+	// call auth service to validate token
+	const response = await fetch('http://host.docker.internal:8000/api/auth/check',{
 		method: 'GET',
 		withCredentials: true,
 		credentials: 'include',
 		mode: 'cors',
 		headers:  {
 			Authorization: `Bearer ${token}`
-		}
-	});
-	// call auth service to validate token
-	console.log(request);	
-	const response = await fetch('http://host.docker.internal:8000/api/auth/check', request);
+
+		}});
 	if (!response.ok) {
 		return  new Error('Invalid token');
 	}
