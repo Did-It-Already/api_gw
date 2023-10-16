@@ -1,4 +1,4 @@
-import { generalRequest, getRequest } from '../../utilities';
+import { generalRequest, getRequest } from '../utilities';
 
 const auth_url = `http://host.docker.internal:8000/api`;
 import userResolver from "./user.resolver"
@@ -18,7 +18,14 @@ const resolvers = {
 				console.log(userMutation)
 				user.user_id = userMutation.user_id
 				console.log(user)
-				return generalRequest(`${auth_url}/user/register`, 'POST', user)
+				return generalRequest(`${auth_url}/user/`, 'POST', user)
+			},
+
+		deleteUser: async (_, { }, contextValue) =>
+			{
+				const userMutation = await userResolver.Mutation.delete(null, {}, contextValue)
+				if (userMutation instanceof Error) return userMutation
+				return generalRequest(`${auth_url}/user/${contextValue.id}`,'DELETE', )
 			},
 		refresh: (_, {refresh}) => 
 			generalRequest(`${auth_url}/auth/refresh`, 'POST', {refresh}),

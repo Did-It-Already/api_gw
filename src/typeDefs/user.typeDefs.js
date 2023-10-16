@@ -30,11 +30,11 @@ export const userTypeDef = `
 
 export const userQueries = `
       allUsers: [User]!
-      userById(user_id: Int!): User!
+      userById: User!
   `;
 
 export const userMutations = `
     createUser(user: UserInput!): User!
-    updateUser(user_id: Int!, user: UserUpdateInput!): User!
-    deleteUser(user_id: Int!): DeleteResult
+    updateUser(user: UserUpdateInput!): User!
+    delete: DeleteResult
 `;

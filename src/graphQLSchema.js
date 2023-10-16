@@ -8,30 +8,31 @@ import {
 	userMutations,
 	userQueries,
 	userTypeDef
-} from './swarch2023ii/typeDefs/user.typeDefs';
+} from './typeDefs/user.typeDefs';
 
 import {
 	taskMutations,
 	taskQueries,
 	taskTypeDef
-} from './swarch2023ii/typeDefs/tasks.typeDefs';
+} from './typeDefs/tasks.typeDefs';
 
 import {
 	authMutations,
 	authQueries,
 	authTypeDef
-} from './swarch2023ii/typeDefs/auth.typeDefs';
+} from './typeDefs/auth.typeDefs';
 
 import {
 	habitTypeDef,
 	habitMutations,
 	habitQueries
-} from './swarch2023ii/typeDefs/habits.typeDefs';
+} from './typeDefs/habits.typeDefs';
 
-import userResolvers from './swarch2023ii/resolvers/user.resolver';
-import tasksResolvers from './swarch2023ii/resolvers/tasks.resolver';
-import authResolvers from './swarch2023ii/resolvers/auth.resolver';
-import habitsResolvers from './swarch2023ii/resolvers/habits.resolver';
+import userResolvers from './resolvers/user.resolver';
+import tasksResolvers from './resolvers/tasks.resolver';
+import authResolvers from './resolvers/auth.resolver';
+import habitsResolvers from './resolvers/habits.resolver';
+
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[

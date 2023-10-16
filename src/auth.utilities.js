@@ -18,28 +18,14 @@ export async function getUserId(token) {
 	if (!response.ok) {
 		return  new Error('Invalid token');
 	}
+	//TODO: handle better errors (no id when deleting, show invalid token msg )
 	const data = (await response.json()).data;
 	const user= data.user;
-	return user.user_id;
-}
-export function isAuthorized(userId, req_user_id) {
-	if (!userId ) {
-		return false 
-	}
-	if (userId !== req_user_id) {
-		return false
-	}
-	return true;
+	return {user_id: user.user_id, id: user.id};
 }
 
-export async function checkAuth(contextValue, user_id) {
+export async function checkAuth(contextValue) {
 	if ((typeof contextValue.user_id === "undefined") ) {
-		// return error
-	
 		return new Error('Not Authenticated');
-
-	}
-	if (!isAuthorized(contextValue.user_id, user_id)) {
-		return new Error('Unauthorized');
 	}
 }
