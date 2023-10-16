@@ -1,5 +1,5 @@
-import { generalRequest, getRequest } from '../../utilities';
-import { isAuthorized, checkAuth } from '../../auth.utilities';
+import { isAuthorized, checkAuth } from '../auth.utilities';
+import { generalRequest, getRequest } from '../utilities';
 const users_url = `http://host.docker.internal:8001/users`;
 
 const resolvers = {
