@@ -1,4 +1,4 @@
-FROM node:carbon-slim
+FROM node:14.17.0
 
 # Create app directory
 WORKDIR /dia_api_gw
